@@ -1,11 +1,20 @@
 Gallant
 ========================
 
-A very clean Twitter Bootstrap based theme for wordpress. 
+A very clean Twitter Bootstrap based theme for Wordpress. 
 
-Features: mobile device screen adjustment, fluid layout, customizable sidebar and footer, custom menu, threaded comments, auto table styles.
+Features: 
 
-![alt](https://raw.github.com/wiki/victorhurdugaci/gallant/img/screenshot.png)
+- Mobile device screen adjustment
+- Fluid layout
+- Customizable sidebar and footer
+- Custom menu
+- Threaded comments
+- Auto table style
+
+Live demo: [here](http://victorhurdugaci.com).
+
+![Screenshot](https://raw.github.com/wiki/victorhurdugaci/gallant/img/screenshot.png "Screenshot")
 
 Copyright 2014 Victor Hurdugaci (http://victorhurdugaci.com)
 
