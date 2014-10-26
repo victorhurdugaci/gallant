@@ -5,6 +5,8 @@ A very clean Twitter Bootstrap based theme for wordpress.
 
 Features: mobile device screen adjustment, fluid layout, customizable sidebar and footer, custom menu, threaded comments, auto table styles.
 
+![alt](https://raw.github.com/wiki/victorhurdugaci/gallant/img/screenshot.png)
+
 Copyright 2014 Victor Hurdugaci (http://victorhurdugaci.com)
 
 Licensed under the Apache License, Version 2.0 (the "License");
