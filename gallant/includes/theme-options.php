@@ -40,9 +40,9 @@ function register_theme_options($wp_customize) {
 function register_settings_ui($wp_customize) {
     $style_section = 'style';
     $footer_section = 'footer';
+    $global_section = 'global';
     
     /* Style section */
-    
     $wp_customize->add_section($style_section , array(
         'title'       => __('Style', 'gallant'),
         'priority'    => 100,
@@ -91,11 +91,25 @@ function register_settings_ui($wp_customize) {
         'description' => __('A link showing that your blog uses this theme will be displayed at the bottom of the page. Remember, this theme is free :)', 'gallant'),
         'type'        => 'checkbox'
     )));
+    
+    /* Theme global */
+    $wp_customize->add_section($global_section , array(
+        'title'       => __('Global', 'gallant'),
+        'priority'    => 102,
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Control($wp_customize, Theme_Options::DISABLE_COMMENTS, array(
+        'section'     => $global_section,
+        'settings'    => Theme_Options::DISABLE_COMMENTS,
+        'label'       => __('Disable comments', 'gallant'),
+        'description' => sprintf(__('Removes the comments form from all posts and pages. If there are already comments, it hides them.')),
+        'type'        => 'checkbox'
+    )));
 }
 
-function register_settings($wp_customize) {
-    /* Style */
-     $wp_customize->add_setting(Theme_Options::AUTO_TABLE_STYLE , array(
+function register_settings($wp_customize) {    
+    /* Style */    
+    $wp_customize->add_setting(Theme_Options::AUTO_TABLE_STYLE , array(
         'default'           => true,
         'transport'         => 'postMessage',
         'sanitize_callback' => 'sanitize_boolean'
@@ -117,6 +131,12 @@ function register_settings($wp_customize) {
         'transport'   => 'postMessage',
         'sanitize_callback' => 'sanitize_boolean'
     ));
+    
+    /* Theme global */
+    $wp_customize->add_setting(Theme_Options::DISABLE_COMMENTS , array(
+        'default'           => false,
+        'sanitize_callback' => 'sanitize_boolean'
+    ));  
 }
 
 function sanitize_boolean($val) {
@@ -148,6 +168,8 @@ abstract class Theme_Options {
     const FOOTER_SHOW_SUPPORT = 'footer_show_support';
     
     const AUTO_TABLE_STYLE = 'auto_table_style';
+    
+    const DISABLE_COMMENTS = 'disable_comments';
 }
 
 ?>

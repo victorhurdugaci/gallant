@@ -97,6 +97,10 @@ class Content_Renderer {
             $args[Content_Renderer::NO_TAGS] = true;
             $args[Content_Renderer::NO_DATE] = true;
         }
+        
+        if (get_theme_mod(Theme_Options::DISABLE_COMMENTS)) {
+            $args[Content_Renderer::NO_COMMENTS] = true;
+        }
     }
 
     private function render_post_header($args) {
@@ -135,8 +139,8 @@ class Content_Renderer {
                         ?><span class="glyphicon glyphicon-time"></span>&nbsp;<?php the_time('M jS, Y') ?>&nbsp;<?php
                     }
                     
-                    // THERE IS A BUG HERE
-                    if (comments_open() || have_comments()) {
+                    if (!$args[Content_Renderer::NO_COMMENTS] && (
+                        comments_open() || have_comments())) {
                         ?><span class="glyphicon glyphicon-comment"></span>&nbsp;<a href="<?php comments_link(); ?>"><?php 
                             comments_number(
                                 __('No comments', 'gallant'),
