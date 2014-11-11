@@ -38,21 +38,44 @@ function register_theme_options($wp_customize) {
 }
 
 function register_settings_ui($wp_customize) {
-    $style_section = 'style';
+    $appearance_section = 'appearance';
     $footer_section = 'footer';
-    $global_section = 'global';
-    
-    /* Style section */
-    $wp_customize->add_section($style_section , array(
-        'title'       => __('Style', 'gallant'),
+
+    /* Appearance */
+    $wp_customize->add_section($appearance_section , array(
+        'title'       => __('Appearance', 'gallant'),
         'priority'    => 100,
     ));
     
+    $wp_customize->add_control(new WP_Customize_Control($wp_customize, Theme_Options::DISABLE_AUTHOR, array(
+        'section'     => $appearance_section,
+        'settings'    => Theme_Options::DISABLE_AUTHOR,
+        'label'       => __('Disable author', 'gallant'),
+        'description' => __('Hides author on posts. Useful if there is a single author.', 'gallant'),
+        'type'        => 'checkbox'
+    )));
+    
+    $wp_customize->add_control(new WP_Customize_Control($wp_customize, Theme_Options::DISABLE_CATEGORIES, array(
+        'section'     => $appearance_section,
+        'settings'    => Theme_Options::DISABLE_CATEGORIES,
+        'label'       => __('Disable categories', 'gallant'),
+        'description' => __('Hides categories on posts.', 'gallant'),
+        'type'        => 'checkbox'
+    )));
+    
+    $wp_customize->add_control(new WP_Customize_Control($wp_customize, Theme_Options::DISABLE_COMMENTS, array(
+        'section'     => $appearance_section,
+        'settings'    => Theme_Options::DISABLE_COMMENTS,
+        'label'       => __('Disable comments', 'gallant'),
+        'description' => __('Removes the comments form from all posts and pages. If there are already comments, it hides them.', 'gallant' ),
+        'type'        => 'checkbox'
+    )));
+    
     $wp_customize->add_control(new WP_Customize_Control($wp_customize, Theme_Options::AUTO_TABLE_STYLE, array(
-        'section'     => $style_section,
+        'section'     => $appearance_section,
         'settings'    => Theme_Options::AUTO_TABLE_STYLE,
         'label'       => __('Style tables automatically', 'gallant'),
-        'description' => sprintf(__('If enabled, all tables will get the \'%s\' class. Disable for a particular table by adding the \'%s\'', 'gallant'), '.table', 'data-noautostyle="true"'),
+        'description' => sprintf(__('If enabled, all tables inside posts will get the \'%s\' class. Disable for a particular table by adding the \'%s\' (does not affect plugins).', 'gallant'), '.table', 'data-noautostyle="true"'),
         'type'        => 'checkbox'
     )));
     
@@ -91,24 +114,25 @@ function register_settings_ui($wp_customize) {
         'description' => __('A link showing that your blog uses this theme will be displayed at the bottom of the page. Remember, this theme is free :)', 'gallant'),
         'type'        => 'checkbox'
     )));
-    
-    /* Theme global */
-    $wp_customize->add_section($global_section , array(
-        'title'       => __('Global', 'gallant'),
-        'priority'    => 102,
-    ));
-    
-    $wp_customize->add_control(new WP_Customize_Control($wp_customize, Theme_Options::DISABLE_COMMENTS, array(
-        'section'     => $global_section,
-        'settings'    => Theme_Options::DISABLE_COMMENTS,
-        'label'       => __('Disable comments', 'gallant'),
-        'description' => sprintf(__('Removes the comments form from all posts and pages. If there are already comments, it hides them.')),
-        'type'        => 'checkbox'
-    )));
 }
 
 function register_settings($wp_customize) {    
-    /* Style */    
+    /* Appearance */
+    $wp_customize->add_setting(Theme_Options::DISABLE_CATEGORIES , array(
+        'default'           => false,
+        'sanitize_callback' => 'sanitize_boolean'
+    ));  
+    
+    $wp_customize->add_setting(Theme_Options::DISABLE_AUTHOR , array(
+        'default'           => false,
+        'sanitize_callback' => 'sanitize_boolean'
+    )); 
+    
+    $wp_customize->add_setting(Theme_Options::DISABLE_COMMENTS , array(
+        'default'           => false,
+        'sanitize_callback' => 'sanitize_boolean'
+    ));  
+
     $wp_customize->add_setting(Theme_Options::AUTO_TABLE_STYLE , array(
         'default'           => true,
         'transport'         => 'postMessage',
@@ -160,6 +184,10 @@ function sanitize_none($val) {
 }
 
 abstract class Theme_Options {
+    const DISABLE_CATEGORIES = 'disable_categories';
+    const DISABLE_AUTHOR = 'disable_author';
+    const DISABLE_COMMENTS = 'disable_comments';
+    
     const FOOTER_COLUMNS = 'footer_columns';
     const FOOTER_COLUMNS_DEFAULT = 3;
     
@@ -168,8 +196,6 @@ abstract class Theme_Options {
     const FOOTER_SHOW_SUPPORT = 'footer_show_support';
     
     const AUTO_TABLE_STYLE = 'auto_table_style';
-    
-    const DISABLE_COMMENTS = 'disable_comments';
 }
 
 ?>

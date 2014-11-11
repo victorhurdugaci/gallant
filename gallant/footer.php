@@ -31,7 +31,7 @@
                 </div>
                 
                 <div id="footer_support" class="<?php echo get_theme_mod(Theme_Options::FOOTER_SHOW_SUPPORT)?'':'no-support' ?>">
-                    <p>Theme <a href="http://victorhurdugaci.com/projects/gallant" target="_blank">Gallant</a> by Victor Hurdugaci</p>
+                    <p>Theme  <a href="<?php echo wp_get_theme()->get('ThemeURI') ?>" target="_blank">Gallant</a> by <?php echo wp_get_theme()->get('Author') ?></p>
                 </div>
             </div>
         </footer>

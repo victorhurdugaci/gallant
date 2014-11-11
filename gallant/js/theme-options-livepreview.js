@@ -15,7 +15,19 @@
 */
 
 (function($){
-    /* Style */
+    /* Appearance */
+    wp.customize('disable_author', function(value) {
+		value.bind(function(newval) {
+			$('.post-author').toggle(newval);
+		});
+	});
+    
+    wp.customize('disable_categories', function(value) {
+		value.bind(function(newval) {
+			$('.post-categories').toggle(newval);
+		});
+	});
+    
     wp.customize('auto_table_style', function(value) {
         value.bind(function(newval) {
             $(".post-body > table").each(function(index, element) {

@@ -151,12 +151,24 @@ class Content_Renderer {
                 }
             ));
             
+            if (!get_theme_mod(Theme_Options::DISABLE_AUTHOR)) {
+                ?><p class="post-author"><span class="glyphicon glyphicon-user"></span>&nbsp; <?php the_author(); ?></p><?php
+            }
+            
             if (!$args[Content_Renderer::NO_TAGS]) {
                 $this->render_if_not_empty(array(
                     'func'   => function() { the_tags(""); },
                     'before' => '<p><span class="glyphicon glyphicon-tag"></span>&nbsp;',
                     'after'  => '</p>'
                 ));
+                
+                if (!get_theme_mod(Theme_Options::DISABLE_CATEGORIES)) {
+                    $this->render_if_not_empty(array(
+                        'func'   => function() { the_category(", "); },
+                        'before' => '<p class="post-categories"><span class="glyphicon glyphicon-list"></span>&nbsp;',
+                        'after'  => '</p>'
+                    ));
+                }
             } 
         }    
         ?></div><?php
