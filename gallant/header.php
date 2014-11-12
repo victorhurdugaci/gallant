@@ -48,7 +48,7 @@
             wp_head(); 
         ?>
     </head>
-    <body body_class()>
+    <body <?php body_class() ?>>
         <?php require('includes/navbar.php'); ?>
 
         <div class="container">            

@@ -23,6 +23,7 @@
 
 add_action('after_setup_theme', 'after_theme_setup');
 add_filter('the_password_form', 'bootstrap_password_form');
+add_filter( 'wp_title', 'page_title', 10, 2 );
 
 function after_theme_setup(){
     // i18n stuff 
@@ -45,6 +46,16 @@ function bootstrap_password_form() {
     
     <?php
     return ob_get_clean();
+}
+
+function page_title( $title, $sep ) {
+    $title = get_bloginfo('name');
+    
+    if (!is_home()) {
+        $title = get_the_title() . ' &laquo; ' . $title;
+    }
+    
+    return $title;
 }
 
 ?>
