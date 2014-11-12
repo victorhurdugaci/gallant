@@ -22,6 +22,7 @@ $renderer = new Content_Renderer();
 
 class Content_Renderer {
     const SHOW_EXCERPT = 'show_excerpt';
+    const NO_HEADER = 'no_header';
     const NO_COMMENTS = 'no_comments';
     const NO_NAVIGATION = 'no_navigation';
     const NO_META = 'no_meta';
@@ -45,6 +46,8 @@ class Content_Renderer {
         Content_Renderer::STATIC_CONTENT    => null,
         
         Content_Renderer::HIGHLIGHT_STICKY  => false,
+        
+        Content_Renderer::NO_HEADER         => false
     );
 
     public function Render_Content_Not_Found() {
@@ -105,6 +108,10 @@ class Content_Renderer {
 
     private function render_post_header($args) {
         global $post;
+        
+        if ($args[Content_Renderer::NO_HEADER]) {
+            return;
+        }
         
         ?><div class="post-header page-header"><?php
 
