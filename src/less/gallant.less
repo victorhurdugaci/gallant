@@ -1,0 +1,141 @@
+@import "wordpress.less";
+@import "bootstrap.less";
+
+@color0: #FFFFFF;
+@color1: #444444;
+@color2: #EEEEEE;
+@color3: #5BC0DE;
+
+@font-primary: "Open Sans";
+@font-primary-color: @color1;
+@font-primary-size: 16px;
+
+@font-small-size: @font-primary-size - 3;
+@font-large-size: @font-primary-size + 10;
+
+@line-height: 1.75;
+
+@screen-size-xs: 450px;
+@screen-size-s: 768px;
+@screen-size-m: 992px;
+@screen-size-l: 1200px;
+
+body {
+    background-color: @color2;
+    color: @color1;
+    font-family: @font-primary;
+    font-size: @font-primary-size;
+    line-height: @line-height;
+    padding-top: 50px;	
+}
+
+a,
+a:hover,
+a:visited {
+    color: @color3;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.gallant-container {
+    background-color: @color0;
+}
+
+.gallant-content {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/* ======== Post ======== */
+.post {
+    background-color: @color0;
+    padding-bottom: 30px;
+}
+
+.post-body {
+    overflow: hidden;
+}
+
+.post-footer,
+.post-comments,
+#respond {
+    border-top: 1px solid @color2;
+    padding-top: 10px;
+}
+
+.post-header,
+.page-header,
+.post-footer, 
+.post-comments {
+    margin-top: 20px;
+}
+
+.post-header {
+    p {
+        font-size: @font-small-size;
+    }
+}
+
+.post-header,
+.page-header {
+    overflow: hidden;
+}
+
+/* indent only nested comments. Leave root alone */
+div.comments-list {
+    div.comments-list {
+        margin-left: 20px;
+    }
+}
+
+.post-preview-thumbnail {
+    float: right;
+    margin-left: 10px;
+    max-width: 50%;
+    overflow: hidden;
+}
+  
+@media (max-width: @screen-size-xs), (min-width: @screen-size-s) and (max-width: @screen-size-m) {
+    .post-preview-thumbnail {
+        float: none;
+        margin-left: 0px;
+        max-width: 100%;
+    }
+}
+
+/* ======== Sidebars ======== */
+#sidebar-right {
+        div.widget {
+            background-color: @color0;
+            padding: 10px 8% 20px 8%;
+        }
+}
+
+/* ======== Util ======== */
+.wrap {
+    word-wrap: break-word;
+}
+
+/* ======== Footer ======== */
+footer,
+.navbar-inverse {
+    background-color: #333;
+}
+
+footer {
+    font-size: @font-small-size;
+    
+    a,
+    a:hover {
+        color: @color3;
+    }
+}
+
+#footer_text,
+#footer_support {
+    text-align: center;
+}
