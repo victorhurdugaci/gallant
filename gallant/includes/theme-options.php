@@ -15,7 +15,6 @@
     limitations under the License.
 */
 ?>
-
 <?php
 
 add_action('customize_register', 'register_theme_options');

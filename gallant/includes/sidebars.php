@@ -15,7 +15,6 @@
     limitations under the License.
 */
 ?>
-
 <?php
 
 add_action('widgets_init', 'register_theme_sidebars');

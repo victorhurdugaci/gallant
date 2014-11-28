@@ -15,7 +15,6 @@
     limitations under the License.
 */
 ?>
-
 <?php
 
 $renderer = new Content_Renderer();

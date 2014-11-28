@@ -15,7 +15,6 @@
     limitations under the License.
 */
 ?>
-
 <?php
 /**
  * This file contains various customizations to the core functionality of WordPress
@@ -52,7 +51,7 @@ function page_title( $title, $sep ) {
     $title = get_bloginfo('name');
     
     if (!is_home()) {
-        $title = get_the_title() . ' &laquo; ' . $title;
+        $title = get_the_title() . ' - ' . $title;
     }
     
     return $title;

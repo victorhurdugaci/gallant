@@ -15,7 +15,6 @@
     limitations under the License.
 */
 ?>
-
 <?php
 
 class Bootstrap_Comment_Walker extends Walker_Comment {

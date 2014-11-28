@@ -15,7 +15,6 @@
     limitations under the License.
 */
 ?>
-
 <?php
 
 function is_null_or_empty($variable){

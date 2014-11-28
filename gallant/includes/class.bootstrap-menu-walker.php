@@ -15,7 +15,6 @@
     limitations under the License.
 */
 ?>
-
 <?php
 
 class Bootstrap_Menu_Walker extends Walker_Nav_Menu {

@@ -15,7 +15,6 @@
     limitations under the License.
 */
 ?>
-
 <nav class="navbar navbar-inverse" role="navigation">
     <div class="container">
         <div class="navbar-header">

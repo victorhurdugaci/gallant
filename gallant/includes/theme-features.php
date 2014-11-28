@@ -15,7 +15,6 @@
     limitations under the License.
 */
 ?>
-
 <?php
 
 if (!isset( $content_width )) {
