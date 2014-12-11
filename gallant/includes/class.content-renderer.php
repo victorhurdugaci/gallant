@@ -144,16 +144,6 @@ class Content_Renderer {
                     if (!$args[Content_Renderer::NO_DATE]) {
                         ?><span class="glyphicon glyphicon-time"></span>&nbsp;<?php the_time('M jS, Y') ?>&nbsp;<?php
                     }
-                    
-                    if (!$args[Content_Renderer::NO_COMMENTS] && (
-                        comments_open() || have_comments())) {
-                        ?><span class="glyphicon glyphicon-comment"></span>&nbsp;<a href="<?php comments_link(); ?>"><?php 
-                            comments_number(
-                                __('No comments', 'gallant'),
-                                __('One comment', 'gallant'), 
-                                __('% comments', 'gallant')); 
-                        ?></a><?php
-                    }
                 }
             ));
             
