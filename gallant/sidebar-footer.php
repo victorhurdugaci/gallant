@@ -16,7 +16,7 @@
 */
 ?>
 
-<div id="sidebar-footer" class="sidebar row">
+<div id="sidebar-footer" class="sidebar row hidden-xs">
 	<?php 
         if (!dynamic_sidebar(Sidebars::Footer)) {
         }
